@@ -64,7 +64,13 @@ export const App = () => {
                   key={room.id}
                   className={`room ${room.id}`}
                   style={{ backgroundImage: `url(${room.cover})` }}
-                  onClick={() => setRoom(room)}
+                  onClick={() => {
+                    if (room.id === "fear") {
+                      setRoom(room);
+                    } else {
+                      alert("This room is not available yet.");
+                    }
+                  }}
                 >
                   <div className="room-overlay">
                     <div className="room-text">
