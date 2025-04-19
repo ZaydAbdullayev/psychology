@@ -23,9 +23,9 @@ export const Result = ({ result, action }) => {
     const cardEl = document.querySelector(".poster");
     const imgUrl = await uploadToImgbb(await getPackAsImageData(cardEl));
     const tweetText = `
-My Degen Pack 
+MY MIND LABYRINTH RESULT
 
-$MDP
+$MML
 `;
     const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
       tweetText
