@@ -10,30 +10,35 @@ export const rooms = [
         title: "FEAR ROOM",
         subtitle: "Choose your biggest fear",
         cover: cover1,
+        avaible: true,
     },
     {
         id: "time",
         title: "TIME ROOM",
         subtitle: "Complete the task in 30 seconds",
         cover: cover2,
+        avaible: false,
     },
     {
         id: "memory",
         title: "MEMORY ROOM",
         subtitle: "Remember the objects",
         cover: cover3,
+        avaible: false,
     },
     {
         id: "choice",
         title: "CHOICE ROOM",
         subtitle: "Examine a dilemma",
         cover: cover4,
+        avaible: false,
     },
     {
         id: "reflection",
         title: "REFLECTION ROOM",
         subtitle: "Reflect on yourself",
         cover: cover5,
+        avaible: false,
     },
 ]
 

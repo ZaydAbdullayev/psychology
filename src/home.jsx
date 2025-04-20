@@ -5,11 +5,27 @@ import { rooms } from "./context/data";
 import { Background } from "./components/bg";
 import { Room1 } from "./components/room1";
 import { Result } from "./components/result";
+import music from "./assets/music.mp3";
+import lock from "./assets/zincir3.gif";
 
 export const App = () => {
   const [glitch, setGlitch] = useState(false);
   const [room, setRoom] = useState(null);
   const [result, setResult] = useState(null);
+  const [audio] = useState(new Audio(music));
+
+  const playMusic = () => {
+    if (audio.currentTime > 0) {
+      audio.currentTime = 0;
+    }
+    audio.loop = true;
+    audio.volume = 0.3;
+    audio.play().catch((err) => console.log("Autoplay blocked:", err));
+  };
+  const stopMusic = () => {
+    audio.pause();
+    audio.currentTime = 0;
+  };
 
   useEffect(() => {
     let glitchTimeout;
@@ -20,8 +36,7 @@ export const App = () => {
     };
 
     const scheduleNextGlitch = () => {
-      const nextDelay = Math.floor(Math.random() * 10000) + 7000;
-      // 7–17 saniye arası bir sonraki glitch
+      const nextDelay = Math.floor(Math.random() * 10000) + 6000;
       setTimeout(() => {
         triggerGlitch();
         scheduleNextGlitch();
@@ -38,6 +53,8 @@ export const App = () => {
   const finish = (result) => {
     if (result === "cancel") {
       setRoom(null);
+      setResult(null);
+      stopMusic();
       return;
     }
     setRoom(null);
@@ -51,7 +68,7 @@ export const App = () => {
       ) : result ? (
         <>
           <Background />
-          <Result result={result} />
+          <Result result={result} action={finish} />
         </>
       ) : (
         <>
@@ -67,6 +84,7 @@ export const App = () => {
                   onClick={() => {
                     if (room.id === "fear") {
                       setRoom(room);
+                      playMusic();
                     } else {
                       alert("This room is not available yet.");
                     }
@@ -78,6 +96,13 @@ export const App = () => {
                       <p>{room.subtitle}</p>
                     </div>
                   </div>
+                  {!room.avaible && (
+                    <img
+                      src={lock}
+                      alt="lock"
+                      className="lock"
+                    />
+                  )}
                 </div>
               ))}
             </div>

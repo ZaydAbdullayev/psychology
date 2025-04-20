@@ -92,8 +92,8 @@
     height: 380px;
     background-size: cover;
     background-position: top;
-    border-radius: 6px;
-    overflow: hidden;
+    border-radius: 10px;
+    /* overflow: hidden; */
     position: relative;
     filter: brightness(0.92);
     transition: all 0.3s ease;
@@ -133,6 +133,18 @@
         color: #b9b9b9;
         text-shadow: 0 0 4px #000;
       }
+    }
+
+    &.fear {
+      filter: brightness(2);
+      border: 1px solid rgba(83, 52, 97, 0.336);
+    }
+
+    .lock{
+      position: absolute;
+      top: 30%;
+      left: -1%;
+      width: 102%;
     }
   }
 }

@@ -9,6 +9,7 @@ import { Button } from "./btn.component";
 
 export const Result = ({ result, action }) => {
   const [sending, setSending] = useState(false);
+
   const cancel = () => {
     action("cancel");
   };
